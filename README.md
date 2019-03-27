@@ -9,12 +9,13 @@ Moduły:
 - /lib/ml -  Maszynowe przetwarzanie obrazu,
 - /sch - Schamat połączeń,
 - /test/* - pliki do testów jednostkowych oraz systemowych.
+- /.build/ - katalog tymczasowy/z wynikami kompilacji
 
-TOthink:
+Do przemyślenia:
 - /lib/web
 
 Lista prac:
- - [ ] Schemat połączeń
+ - [ ] Schemat połączeń: [drawIo](https://tnij.me/6t0rK)
  - [ ] ML:
    - [x] Stworzenie modelu i przetestowanie go,
    - [ ] Integracja z resztą funkcjonalności.
