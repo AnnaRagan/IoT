@@ -1,0 +1,117 @@
+cmake_minimum_required(VERSION 3.7)
+project(trafficLights)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread")
+
+include_directories(
+  /usr/local/include/opencv4
+)
+
+add_executable(trafficLights
+  src/MJPEGWriter.cpp
+  src/main.cpp
+)
+
+if ("${TARGET}" STREQUAL "RASPBERRY")
+  target_link_libraries(
+    trafficLights
+    /usr/local/lib/libopencv_aruco.so
+    /usr/local/lib/libopencv_bgsegm.so
+    /usr/local/lib/libopencv_bioinspired.so
+    /usr/local/lib/libopencv_calib3d.so
+    /usr/local/lib/libopencv_ccalib.so
+    /usr/local/lib/libopencv_core.so
+    /usr/local/lib/libopencv_datasets.so
+    /usr/local/lib/libopencv_dnn.so
+    /usr/local/lib/libopencv_dnn_objdetect.so
+    /usr/local/lib/libopencv_dpm.so
+    /usr/local/lib/libopencv_face.so
+    /usr/local/lib/libopencv_features2d.so
+    /usr/local/lib/libopencv_flann.so
+    /usr/local/lib/libopencv_fuzzy.so
+    /usr/local/lib/libopencv_gapi.so
+    /usr/local/lib/libopencv_hfs.so
+    /usr/local/lib/libopencv_highgui.so
+    /usr/local/lib/libopencv_img_hash.so
+    /usr/local/lib/libopencv_imgcodecs.so
+    /usr/local/lib/libopencv_imgproc.so
+    /usr/local/lib/libopencv_line_descriptor.so
+    /usr/local/lib/libopencv_ml.so
+    /usr/local/lib/libopencv_objdetect.so
+    /usr/local/lib/libopencv_optflow.so
+    /usr/local/lib/libopencv_phase_unwrapping.so
+    /usr/local/lib/libopencv_photo.so
+    /usr/local/lib/libopencv_plot.so
+    /usr/local/lib/libopencv_quality.so
+    /usr/local/lib/libopencv_reg.so
+    /usr/local/lib/libopencv_rgbd.so
+    /usr/local/lib/libopencv_saliency.so
+    /usr/local/lib/libopencv_shape.so
+    /usr/local/lib/libopencv_stereo.so
+    /usr/local/lib/libopencv_stitching.so
+    /usr/local/lib/libopencv_structured_light.so
+    /usr/local/lib/libopencv_superres.so
+    /usr/local/lib/libopencv_surface_matching.so
+    /usr/local/lib/libopencv_text.so
+    /usr/local/lib/libopencv_tracking.so
+    /usr/local/lib/libopencv_video.so
+    /usr/local/lib/libopencv_videoio.so
+    /usr/local/lib/libopencv_videostab.so
+    /usr/local/lib/libopencv_xfeatures2d.so
+    /usr/local/lib/libopencv_ximgproc.so
+    /usr/local/lib/libopencv_xobjdetect.so
+    /usr/local/lib/libopencv_xphoto.so
+  )
+else ()
+  target_link_libraries(
+    trafficLights
+    /usr/local/lib/libopencv_aruco.dylib
+    /usr/local/lib/libopencv_bgsegm.dylib
+    /usr/local/lib/libopencv_bioinspired.dylib
+    /usr/local/lib/libopencv_calib3d.dylib
+    /usr/local/lib/libopencv_ccalib.dylib
+    /usr/local/lib/libopencv_core.dylib
+    /usr/local/lib/libopencv_datasets.dylib
+    /usr/local/lib/libopencv_dnn.dylib
+    /usr/local/lib/libopencv_dnn_objdetect.dylib
+    /usr/local/lib/libopencv_dpm.dylib
+    /usr/local/lib/libopencv_face.dylib
+    /usr/local/lib/libopencv_features2d.dylib
+    /usr/local/lib/libopencv_flann.dylib
+    /usr/local/lib/libopencv_fuzzy.dylib
+    /usr/local/lib/libopencv_gapi.dylib
+    /usr/local/lib/libopencv_hfs.dylib
+    /usr/local/lib/libopencv_highgui.dylib
+    /usr/local/lib/libopencv_img_hash.dylib
+    /usr/local/lib/libopencv_imgcodecs.dylib
+    /usr/local/lib/libopencv_imgproc.dylib
+    /usr/local/lib/libopencv_line_descriptor.dylib
+    /usr/local/lib/libopencv_ml.dylib
+    /usr/local/lib/libopencv_objdetect.dylib
+    /usr/local/lib/libopencv_optflow.dylib
+    /usr/local/lib/libopencv_phase_unwrapping.dylib
+    /usr/local/lib/libopencv_photo.dylib
+    /usr/local/lib/libopencv_plot.dylib
+    /usr/local/lib/libopencv_quality.dylib
+    /usr/local/lib/libopencv_reg.dylib
+    /usr/local/lib/libopencv_rgbd.dylib
+    /usr/local/lib/libopencv_saliency.dylib
+    /usr/local/lib/libopencv_shape.dylib
+    /usr/local/lib/libopencv_stereo.dylib
+    /usr/local/lib/libopencv_stitching.dylib
+    /usr/local/lib/libopencv_structured_light.dylib
+    /usr/local/lib/libopencv_superres.dylib
+    /usr/local/lib/libopencv_surface_matching.dylib
+    /usr/local/lib/libopencv_text.dylib
+    /usr/local/lib/libopencv_tracking.dylib
+    /usr/local/lib/libopencv_video.dylib
+    /usr/local/lib/libopencv_videoio.dylib
+    /usr/local/lib/libopencv_videostab.dylib
+    /usr/local/lib/libopencv_xfeatures2d.dylib
+    /usr/local/lib/libopencv_ximgproc.dylib
+    /usr/local/lib/libopencv_xobjdetect.dylib
+    /usr/local/lib/libopencv_xphoto.dylib
+  )
+endif()
