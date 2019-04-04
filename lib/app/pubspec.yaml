@@ -24,9 +24,33 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  #simple recorder and player functionalities
+  flutter_sound: ^1.3.7
+
+  #internationalization and localization facilities, including message translation,
+  #plurals and genders, date/number formatting and parsing, and bidirectional text.
+  intl: ^0.15.8
+
+  #Flutter geolocation plugin which provides easy access to the platform specific location services
+  #  current version of gelolaction causes crash
+  # geolocator: '^3.0.1'
+
+  #The most sophisticated background location-tracking & geofencing module with battery-conscious motion-detection intelligence
+  #  current version of gelolaction causes crash
+  # flutter_background_geolocation: ^0.3.4
+
+  #Dart implementation of gRPC: A high performance, open source, general RPC framework
+  grpc: ^1.0.2
+
+  #Dart implementation of Leaflet for Flutter apps.
+#  flutter_map: any
+  #A Flutter plugin that provides a Google Maps widget.
+  google_maps_flutter:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 
 # For information on the generic Dart part of this file, see the
