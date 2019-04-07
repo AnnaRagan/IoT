@@ -33,7 +33,7 @@ dependencies:
 
   #Flutter geolocation plugin which provides easy access to the platform specific location services
   #  current version of gelolaction causes crash
-  # geolocator: '^3.0.1'
+  geolocator: ^3.0.1
 
   #The most sophisticated background location-tracking & geofencing module with battery-conscious motion-detection intelligence
   #  current version of gelolaction causes crash
@@ -43,9 +43,18 @@ dependencies:
   grpc: ^1.0.2
 
   #Dart implementation of Leaflet for Flutter apps.
-#  flutter_map: any
+  #  flutter_map: any
   #A Flutter plugin that provides a Google Maps widget.
   google_maps_flutter:
+
+  #A flutter text to speech plugin (Swift,Java)
+  flutter_tts:
+
+  #A Flutter plugin to use the ML Kit Vision for Firebase API.
+  firebase_ml_vision: ^0.7.0
+  #A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
+  image_picker: ^0.5.2
+
 
 dev_dependencies:
   flutter_test:

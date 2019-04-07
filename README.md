@@ -33,3 +33,10 @@ Lista prac:
      - [ ] Używając głośnika
    
 
+Układy można podzelić na dwie części:
+ - te, które są niezbedne do bezpiecznego poruszania się po mieście i **muszą** działać niezaleźnie od połaczenia internetowego:
+   - rpi + kamera + LIDAR
+ - te, które stanowią dodatkową funkcjonalność
+   - przetwarzanie obrazu na głos,
+   - odbieranie danych gps
+   
