@@ -9,12 +9,17 @@ import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 class TextToSpeech extends StatefulWidget {
   @override
   _TextToSpeechState createState() => _TextToSpeechState();
+  static FlutterTts flutterTts;
+
+  void speakFromOutside(String string) {
+    flutterTts.speak(string);
+  }
 }
 
 enum TtsState { playing, stopped }
 
 class _TextToSpeechState extends State<TextToSpeech> {
-  FlutterTts flutterTts;
+//  FlutterTts flutterTts;
   dynamic languages;
   dynamic voices;
   String language;
@@ -35,10 +40,10 @@ class _TextToSpeechState extends State<TextToSpeech> {
   }
 
   initTts() {
-    flutterTts = FlutterTts();
+    TextToSpeech.flutterTts = FlutterTts();
 
     if (Platform.isAndroid) {
-      flutterTts.ttsInitHandler(() {
+      TextToSpeech.flutterTts.ttsInitHandler(() {
         _getLanguages();
         _getVoices();
       });
@@ -46,19 +51,19 @@ class _TextToSpeechState extends State<TextToSpeech> {
       _getLanguages();
     }
 
-    flutterTts.setStartHandler(() {
+    TextToSpeech.flutterTts.setStartHandler(() {
       setState(() {
         ttsState = TtsState.playing;
       });
     });
 
-    flutterTts.setCompletionHandler(() {
+    TextToSpeech.flutterTts.setCompletionHandler(() {
       setState(() {
         ttsState = TtsState.stopped;
       });
     });
 
-    flutterTts.setErrorHandler((msg) {
+    TextToSpeech.flutterTts.setErrorHandler((msg) {
       setState(() {
         ttsState = TtsState.stopped;
       });
@@ -66,33 +71,33 @@ class _TextToSpeechState extends State<TextToSpeech> {
   }
 
   Future _getLanguages() async {
-    languages = await flutterTts.getLanguages;
+    languages = await TextToSpeech.flutterTts.getLanguages;
     if (languages != null) setState(() => languages);
   }
 
   Future _getVoices() async {
-    voices = await flutterTts.getVoices;
+    voices = await TextToSpeech.flutterTts.getVoices;
     if (voices != null) setState(() => voices);
   }
 
   Future _speak() async {
     if (_newVoiceText != null) {
       if (_newVoiceText.isNotEmpty) {
-        var result = await flutterTts.speak(_newVoiceText);
+        var result = await TextToSpeech.flutterTts.speak(_newVoiceText);
         if (result == 1) setState(() => ttsState = TtsState.playing);
       }
     }
   }
 
   Future _stop() async {
-    var result = await flutterTts.stop();
+    var result = await TextToSpeech.flutterTts.stop();
     if (result == 1) setState(() => ttsState = TtsState.stopped);
   }
 
   @override
   void dispose() {
     super.dispose();
-    flutterTts.stop();
+    TextToSpeech.flutterTts.stop();
   }
 
   List<DropdownMenuItem<String>> getLanguageDropDownMenuItems() {
@@ -114,14 +119,14 @@ class _TextToSpeechState extends State<TextToSpeech> {
   void changedLanguageDropDownItem(String selectedType) {
     setState(() {
       language = selectedType;
-      flutterTts.setLanguage(language);
+      TextToSpeech.flutterTts.setLanguage(language);
     });
   }
 
   void changedVoiceDropDownItem(String selectedType) {
     setState(() {
       voice = selectedType;
-      flutterTts.setVoice(voice);
+      TextToSpeech.flutterTts.setVoice(voice);
     });
   }
 
@@ -135,7 +140,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
   bool _isImageLoaded = false;
 
   Future pickImage() async {
-    flutterTts.speak('Zrób zdjęcie');
+    TextToSpeech.flutterTts.speak('Zrób zdjęcie');
     var tempStorage = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       if (tempStorage != null) {
@@ -143,7 +148,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
         _isImageLoaded = true;
       }
     });
-    flutterTts.speak('Czekaj na przetworzenie');
+    TextToSpeech.flutterTts.speak('Czekaj na przetworzenie');
 
     processText();
   }
@@ -161,6 +166,7 @@ class _TextToSpeechState extends State<TextToSpeech> {
         for (TextElement element in line.elements) {
           debugPrint(element.text);
           _voiceText = _voiceText + " " + element.text;
+//          _voiceText.add
         }
       }
     }
@@ -171,9 +177,9 @@ class _TextToSpeechState extends State<TextToSpeech> {
       },
     );
     debugPrint("Otrzymano: $_newVoiceText");
-    flutterTts.speak('Tekst przetworzony');
+    TextToSpeech.flutterTts.speak('Tekst przetworzony');
     if (_newVoiceText == "") {
-      flutterTts.speak('Brak wyrazów, lub niedokładne zdjęcie. Spróbuj ponownie.');
+      TextToSpeech.flutterTts.speak('Brak wyrazów, lub niedokładne zdjęcie. Spróbuj ponownie.');
     } else {
       _speak();
     }

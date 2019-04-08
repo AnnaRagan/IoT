@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:app/modules/tts/tts.dart';
+import 'package:app/modules/gps/geolocation.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,35 +39,40 @@ class _MyHomePageState extends State<MyHomePage> {
     if (result == 1) setState(() => _ttsState = TtsState.playing);
   }
 
+  int _currentTabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    final btmNavBaarPages = <Widget>[
+      TextToSpeech(),
+      Geolocator(),
+      Container(),
+//      Container(),
+    ];
     return MaterialApp(
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-            appBar: AppBar(
-              title: const Text('KaZaPsa'),
-              bottom: TabBar(tabs: [
-                Tab(icon: Icon(Icons.record_voice_over)),
-                Tab(icon: Icon(Icons.map)),
-                Tab(icon: Icon(Icons.settings)),
-                Tab(icon: Icon(Icons.perm_data_setting)),
-              ]),
-            ),
-            body: TabBarView(children: [
-              ///TODO: process phone camera's capture and voice all recognized text
-              TextToSpeech(),
-//              visionToSpeech(),
-
-              ///TODO: reverse geolocation; by pressing a button or speaking, user gets to know own location (street name)
-              geoLocation(),
-
-//              Container(),
-              Container(),
-              Container(),
-            ])),
+        home: SafeArea(
+            child: Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.record_voice_over), title: Text('Rozp. mowy')),
+          BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('Geolok.')),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text('Ustawienia')),
+//          BottomNavigationBarItem(icon: Icon(Icons.perm_data_setting), title: Text('Dane')),
+        ],
+        currentIndex: _currentTabIndex,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) {
+          setState(() {
+            _currentTabIndex = index;
+          });
+        },
       ),
-    );
+      body: btmNavBaarPages[_currentTabIndex],
+//            appBar: AppBar(
+//              title: const Text('KaZaPsa'),
+//
+//            ),
+    )));
   }
 
   Widget visionToSpeech() {
@@ -75,12 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => _speak(),
         child: Text('asdasd'),
       ),
-    );
-  }
-
-  Widget geoLocation() {
-    return Column(
-      children: <Widget>[Container()],
     );
   }
 }
