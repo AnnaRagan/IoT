@@ -20,18 +20,19 @@ Lista prac:
    - [x] Stworzenie modelu i przetestowanie go,
    - [ ] Integracja z resztą funkcjonalności.
  - [ ] LIDAR:
-   - [ ] Opracowanie HW oraz testy funkcjonalne,
+   - [x] Opracowanie HW oraz testy funkcjonalne,
    - [ ] Integracja z resztą funkcjonalności.
  - [ ] Aplikacja na telefon:
-   - [ ] Tethering internetu,
-   - [ ] Przesyłanie danych GPS,
-   - [ ] Przesyłanie dźwięku z mikrofonu,
+   - [x] Tethering internetu,
+   - [x] Przesyłanie danych GPS,
+   - [x] Przesyłanie dźwięku z mikrofonu,
+   - [ ] Integracja z resztą funkcjonalności.
  - [ ] Polecenia głosowe:
-   - [ ] Opracowanie HW
-   - [ ] Odtwarzanie dzwięku
-     - [ ] Używając telefonu
-     - [ ] Używając głośnika
-   
+   - [x] Opracowanie HW
+   - [x] Odtwarzanie dzwięku
+     - [x] Używając telefonu
+     - [-] Używając głośnika
+   - [ ] Rozpoznawanie dzwięku
 
 Układy można podzelić na dwie części:
  - te, które są niezbedne do bezpiecznego poruszania się po mieście i **muszą** działać niezaleźnie od połaczenia internetowego:
