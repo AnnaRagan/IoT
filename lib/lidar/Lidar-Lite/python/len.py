@@ -13,6 +13,8 @@ else:
 
 for i in range(100):
     distance = lidar.getDistance()
-    print ("Distance to target‚", (distance))
+    print(lidar.getVelocity())
+    print ("Distance to target√¢", (distance))
     if int(distance) < 50:
+        print(lidar.getVelocity())
         print ("Too Close!!! Back Off!!!")
