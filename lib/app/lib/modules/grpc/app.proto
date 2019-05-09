@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.app";
+option java_outer_classname = "RaspberryPiConnection";
+option objc_class_prefix = "RP0Con";
+
+package RaspberryPi;
+
+service RaspberryPi {
+
+    rpc GetMLdata (stream Action) returns (Response) {
+    }
+}
+
+
+message Action {
+    string client_action = 1;
+}
+message Response {
+    string client_response = 1;
+}
+
+
+
