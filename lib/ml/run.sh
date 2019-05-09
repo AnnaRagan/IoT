@@ -1,0 +1,1 @@
+./build.sh && ./build/trafficLights $1 $2

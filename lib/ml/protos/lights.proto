@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Lights {
+  rpc Connect(stream Action) returns (stream Detection) {}
+}
+
+message Detection {
+  string light = 1;
+}
+
+message Action {
+  string type = 1;
+}
