@@ -1,4 +1,11 @@
 .vscode
 .DS_Store
-node_modules
-build
+
+lib/ml/build
+lib/ml/client/node_modules
+lib/ml/lib
+lib/ml/include
+lib/ml/export.tar
+lib/ml/export2.tar
+lib/ml/exec
+lib/ml/trafficLights

@@ -12,7 +12,7 @@ add_executable(trafficLights
   src/main.cpp
 )
 
-if ("${TARGET}" STREQUAL "RASPBERRY")
+if ("${TARGET}" STREQUAL "DOCKER")
   include_directories(
     ${PATH}/include
     ${PATH}/include/opencv4
@@ -28,12 +28,12 @@ if ("${TARGET}" STREQUAL "RASPBERRY")
 
     ${PATH}/lib/libprotobuf.a
 
-    ${PATH}/lib/libgrpc++.dylib
-    ${PATH}/lib/libgrpc++_cronet.dylib
-    ${PATH}/lib/libgrpc++_error_details.dylib
-    ${PATH}/lib/libgrpc++_unsecure.dylib
-    ${PATH}/lib/libgrpc++_reflection.dylib
-    ${PATH}/lib/libgrpcpp_channelz.dylib
+    ${PATH}/lib/libgrpc++.so
+    ${PATH}/lib/libgrpc++_cronet.so
+    ${PATH}/lib/libgrpc++_error_details.so
+    ${PATH}/lib/libgrpc++_unsecure.so
+    ${PATH}/lib/libgrpc++_reflection.so
+    ${PATH}/lib/libgrpcpp_channelz.so
   )
 else ()
   include_directories(
