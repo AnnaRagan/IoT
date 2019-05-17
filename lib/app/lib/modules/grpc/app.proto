@@ -1,25 +1,21 @@
 syntax = "proto3";
-
+////protoc --dart_out=grpc:lib/modules/grpc/generated -Ilib/modules/grpc lib/modules/grpc/app.proto
 option java_multiple_files = true;
 option java_package = "com.example.app";
-option java_outer_classname = "RaspberryPiConnection";
-option objc_class_prefix = "RP0Con";
+option java_outer_classname = "SmartphoneConnProto";
+option objc_class_prefix = "SPH";
 
-package RaspberryPi;
 
-service RaspberryPi {
-
-    rpc GetMLdata (stream Action) returns (Response) {
-    }
+service Lights {
+  rpc Connect(stream Action) returns (stream Detection) {}
 }
 
+message Detection {
+  string light = 1;
+}
 
 message Action {
-    string client_action = 1;
+  string type = 1;
 }
-message Response {
-    string client_response = 1;
-}
-
 
 
